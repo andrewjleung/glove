@@ -54,6 +54,7 @@
 #define LAYER_Lower 1
 #define LAYER_Magic 2
 #define LAYER_Factory 3
+#define LAYER_Symbol 4
 
 /* To deal with the situation where there is no Lower layer, to keep &lower happy */
 
@@ -65,8 +66,6 @@
     /* Custom Device-tree */
     /* Input Listeners */
     /* System behavior and Macros */
-
-    /
 
     behaviors {
         ZMK_TD_LAYER(lower, LAYER_Lower)
