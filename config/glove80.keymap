@@ -335,7 +335,7 @@
 //    ├────────────┼─────────────────────┼─────────────┼─────────────┼─────────────┼───┤                                                   ├───┼─────────────┼─────────────┼─────────────┼─────────────┼──────┤
 //    │    tab     │          Q          │      W      │      F      │      P      │ G │                                                   │ J │      L      │      U      │      Y      │      ;      │  \   │
 //    ├────────────┼─────────────────────┼─────────────┼─────────────┼─────────────┼───┤                                                   ├───┼─────────────┼─────────────┼─────────────┼─────────────┼──────┤
-//    │    lctl    │ &hml A left_CONTROL │ &hml R lalt │ &hml S lgui │ &hml lsft T │ D │                                                   │ H │ &hmr N rsft │ &hmr E rgui │ &hmr I ralt │ &hmr O rctl │  '   │
+//    │    lctl    │ &hml left_CONTROL A │ &hml lalt R │ &hml lgui S │ &hml lsft T │ D │                                                   │ H │ &hmr rsft N │ &hmr rgui E │ &hmr ralt I │ &hmr rctl O │  '   │
 //    ├────────────┼─────────────────────┼─────────────┼─────────────┼─────────────┼───┼──────┬──────┬────────┐   ┌──────┬──────┬──────────┼───┼─────────────┼─────────────┼─────────────┼─────────────┼──────┤
 //    │     `      │          Z          │      X      │      C      │      V      │ B │ esc  │ lgui │ &lower │   │ lctl │ rgui │   rsft   │ K │      M      │      ,      │      .      │      /      │ pgup │
 //    ├────────────┼─────────────────────┼─────────────┼─────────────┼─────────────┼───┼──────┼──────┼────────┤   ├──────┼──────┼──────────┼───┼─────────────┼─────────────┼─────────────┼─────────────┼──────┤
@@ -344,7 +344,7 @@
   &kp F1       &kp F2                &kp F3            &kp F4        &kp F5                                                                                                       &kp F6         &kp F7        &kp F8        &kp F9         &kp F10
   &kp EQUAL    &kp N1                &kp N2            &kp N3        &kp N4         &kp N5                                                                               &kp N6   &kp N7         &kp N8        &kp N9        &kp N0         &kp MINUS
   &kp TAB      &kp Q                 &kp W             &kp F         &kp P          &kp G                                                                                &kp J    &kp L          &kp U         &kp Y         &kp SEMI       &kp BSLH
-  &kp LCTRL    &hml A LEFT_CONTROL   &hml R LEFT_ALT   &hml S LCMD   &hml LSHFT T   &kp D                                                                                &kp H    &hmr N RSHFT   &hmr E RCMD   &hmr I RALT   &hmr O RCTRL   &kp SQT
+  &kp LCTRL    &hml LEFT_CONTROL A   &hml LEFT_ALT R   &hml LCMD S   &hml LSHFT T   &kp D                                                                                &kp H    &hmr RSHFT N   &hmr RCMD E   &hmr RALT I   &hmr RCTRL O   &kp SQT
   &kp GRAVE    &kp Z                 &kp X             &kp C         &kp V          &kp B    &kp ESCAPE   &kp LGUI   &lower         &kp LCTRL   &kp RGUI   &kp RSHFT     &kp K    &kp M          &kp COMMA     &kp DOT       &kp FSLH       &kp PG_UP
   &magic 2 0   &kp HOME              &kp END           &kp LEFT      &kp RIGHT               &kp BSPC     &kp DEL    &kp LALT       &kp RALT    &kp RET    &lt 4 SPACE            &kp UP         &kp DOWN      &kp LBKT      &kp RBKT       &kp PG_DN
 >;
