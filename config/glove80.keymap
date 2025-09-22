@@ -58,7 +58,8 @@
 #define LAYER_Lower 1
 #define LAYER_Magic 2
 #define LAYER_Factory 3
-#define LAYER_Symbol 4
+#define LAYER_Number 4
+#define LAYER_Symbol 5
 
 /* To deal with the situation where there is no Lower layer, to keep &lower happy */
 #ifndef LAYER_Lower
@@ -328,25 +329,25 @@
 
         layer_Base {
             bindings = <
-//    ┌────────────┬─────────────────────┬─────────────┬─────────────┬─────────────┐                                                           ┌─────────────┬─────────────┬─────────────┬─────────────┬──────┐
-//    │     f1     │         f2          │     f3      │     f4      │     f5      │                                                           │     f6      │     f7      │     f8      │     f9      │ f10  │
-//    ├────────────┼─────────────────────┼─────────────┼─────────────┼─────────────┼───┐                                                   ┌───┼─────────────┼─────────────┼─────────────┼─────────────┼──────┤
-//    │     =      │          1          │      2      │      3      │      4      │ 5 │                                                   │ 6 │      7      │      8      │      9      │      0      │  -   │
-//    ├────────────┼─────────────────────┼─────────────┼─────────────┼─────────────┼───┤                                                   ├───┼─────────────┼─────────────┼─────────────┼─────────────┼──────┤
-//    │    tab     │          Q          │      W      │      F      │      P      │ G │                                                   │ J │      L      │      U      │      Y      │      ;      │  \   │
-//    ├────────────┼─────────────────────┼─────────────┼─────────────┼─────────────┼───┤                                                   ├───┼─────────────┼─────────────┼─────────────┼─────────────┼──────┤
-//    │    lctl    │ &hml left_CONTROL A │ &hml lalt R │ &hml lgui S │ &hml lsft T │ D │                                                   │ H │ &hmr rsft N │ &hmr rgui E │ &hmr ralt I │ &hmr rctl O │  '   │
-//    ├────────────┼─────────────────────┼─────────────┼─────────────┼─────────────┼───┼──────┬──────┬────────┐   ┌──────┬──────┬──────────┼───┼─────────────┼─────────────┼─────────────┼─────────────┼──────┤
-//    │     `      │          Z          │      X      │      C      │      V      │ B │ esc  │ lgui │ &lower │   │ lctl │ rgui │   rsft   │ K │      M      │      ,      │      .      │      /      │ pgup │
-//    ├────────────┼─────────────────────┼─────────────┼─────────────┼─────────────┼───┼──────┼──────┼────────┤   ├──────┼──────┼──────────┼───┼─────────────┼─────────────┼─────────────┼─────────────┼──────┤
-//    │ &magic 2 0 │        home         │     end     │    left     │    rght     │   │ bspc │ del  │  lalt  │   │ ralt │ ent  │ lt 4 spc │   │     up      │    down     │      [      │      ]      │ pgdn │
-//    └────────────┴─────────────────────┴─────────────┴─────────────┴─────────────┘   └──────┴──────┴────────┘   └──────┴──────┴──────────┘   └─────────────┴─────────────┴─────────────┴─────────────┴──────┘
-  &kp F1       &kp F2                &kp F3            &kp F4        &kp F5                                                                                                       &kp F6         &kp F7        &kp F8        &kp F9         &kp F10
-  &kp EQUAL    &kp N1                &kp N2            &kp N3        &kp N4         &kp N5                                                                               &kp N6   &kp N7         &kp N8        &kp N9        &kp N0         &kp MINUS
-  &kp TAB      &kp Q                 &kp W             &kp F         &kp P          &kp G                                                                                &kp J    &kp L          &kp U         &kp Y         &kp SEMI       &kp BSLH
-  &kp LCTRL    &hml LEFT_CONTROL A   &hml LEFT_ALT R   &hml LCMD S   &hml LSHFT T   &kp D                                                                                &kp H    &hmr RSHFT N   &hmr RCMD E   &hmr RALT I   &hmr RCTRL O   &kp SQT
-  &kp GRAVE    &kp Z                 &kp X             &kp C         &kp V          &kp B    &kp ESCAPE   &kp LGUI   &lower         &kp LCTRL   &kp RGUI   &kp RSHFT     &kp K    &kp M          &kp COMMA     &kp DOT       &kp FSLH       &kp PG_UP
-  &magic 2 0   &kp HOME              &kp END           &kp LEFT      &kp RIGHT               &kp BSPC     &kp DEL    &kp LALT       &kp RALT    &kp RET    &lt 4 SPACE            &kp UP         &kp DOWN      &kp LBKT      &kp RBKT       &kp PG_DN
+//    ┌────────────┬─────────────────────┬─────────────┬─────────────┬─────────────┐                                                                ┌─────────────┬─────────────┬─────────────┬─────────────┬──────┐
+//    │     f1     │         f2          │     f3      │     f4      │     f5      │                                                                │     f6      │     f7      │     f8      │     f9      │ f10  │
+//    ├────────────┼─────────────────────┼─────────────┼─────────────┼─────────────┼───┐                                                        ┌───┼─────────────┼─────────────┼─────────────┼─────────────┼──────┤
+//    │     =      │          1          │      2      │      3      │      4      │ 5 │                                                        │ 6 │      7      │      8      │      9      │      0      │  -   │
+//    ├────────────┼─────────────────────┼─────────────┼─────────────┼─────────────┼───┤                                                        ├───┼─────────────┼─────────────┼─────────────┼─────────────┼──────┤
+//    │    tab     │          Q          │      W      │      F      │      P      │ G │                                                        │ J │      L      │      U      │      Y      │      ;      │  \   │
+//    ├────────────┼─────────────────────┼─────────────┼─────────────┼─────────────┼───┤                                                        ├───┼─────────────┼─────────────┼─────────────┼─────────────┼──────┤
+//    │    lctl    │ &hml left_CONTROL A │ &hml lalt R │ &hml lgui S │ &hml lsft T │ D │                                                        │ H │ &hmr rsft N │ &hmr rgui E │ &hmr ralt I │ &hmr rctl O │  '   │
+//    ├────────────┼─────────────────────┼─────────────┼─────────────┼─────────────┼───┼──────┬───────────┬────────┐   ┌──────┬──────┬──────────┼───┼─────────────┼─────────────┼─────────────┼─────────────┼──────┤
+//    │     `      │          Z          │      X      │      C      │      V      │ B │ esc  │   lgui    │ &lower │   │ lctl │ rgui │   rsft   │ K │      M      │      ,      │      .      │      /      │ pgup │
+//    ├────────────┼─────────────────────┼─────────────┼─────────────┼─────────────┼───┼──────┼───────────┼────────┤   ├──────┼──────┼──────────┼───┼─────────────┼─────────────┼─────────────┼─────────────┼──────┤
+//    │ &magic 2 0 │        home         │     end     │    left     │    rght     │   │ bspc │ lt 4 lsft │  lalt  │   │ ralt │ ent  │ lt 5 spc │   │     up      │    down     │      [      │      ]      │ pgdn │
+//    └────────────┴─────────────────────┴─────────────┴─────────────┴─────────────┘   └──────┴───────────┴────────┘   └──────┴──────┴──────────┘   └─────────────┴─────────────┴─────────────┴─────────────┴──────┘
+  &kp F1       &kp F2                &kp F3            &kp F4        &kp F5                                                                                                          &kp F6         &kp F7        &kp F8        &kp F9         &kp F10
+  &kp EQUAL    &kp N1                &kp N2            &kp N3        &kp N4         &kp N5                                                                                  &kp N6   &kp N7         &kp N8        &kp N9        &kp N0         &kp MINUS
+  &kp TAB      &kp Q                 &kp W             &kp F         &kp P          &kp G                                                                                   &kp J    &kp L          &kp U         &kp Y         &kp SEMI       &kp BSLH
+  &kp LCTRL    &hml LEFT_CONTROL A   &hml LEFT_ALT R   &hml LCMD S   &hml LSHFT T   &kp D                                                                                   &kp H    &hmr RSHFT N   &hmr RCMD E   &hmr RALT I   &hmr RCTRL O   &kp SQT
+  &kp GRAVE    &kp Z                 &kp X             &kp C         &kp V          &kp B    &kp ESCAPE   &kp LGUI      &lower         &kp LCTRL   &kp RGUI   &kp RSHFT     &kp K    &kp M          &kp COMMA     &kp DOT       &kp FSLH       &kp PG_UP
+  &magic 2 0   &kp HOME              &kp END           &kp LEFT      &kp RIGHT               &kp BSPC     &lt 4 LSHFT   &kp LALT       &kp RALT    &kp RET    &lt 5 SPACE            &kp UP         &kp DOWN      &kp LBKT      &kp RBKT       &kp PG_DN
 >;
         };
 
@@ -420,8 +421,34 @@
   &kp NUMBER_4   &kp NUMBER_0   &kp NUMBER_6   &kp NUMBER_2   &kp NUMBER_8   &kp NUMBER_3   &kp NUMBER_4   &kp NUMBER_5   &kp NUMBER_6       &kp NUMBER_6   &kp NUMBER_5   &kp NUMBER_4   &kp NUMBER_3   &kp NUMBER_8   &kp NUMBER_2   &kp NUMBER_6   &kp NUMBER_0   &kp NUMBER_4
   &kp NUMBER_5   &kp NUMBER_1   &kp NUMBER_7   &kp NUMBER_3   &kp NUMBER_9                  &kp NUMBER_7   &kp NUMBER_8   &kp NUMBER_9       &kp NUMBER_9   &kp NUMBER_8   &kp NUMBER_7                  &kp NUMBER_9   &kp NUMBER_3   &kp NUMBER_7   &kp NUMBER_1   &kp NUMBER_5
 >;
-        };layer_Symbol {
-         bindings = <
+        };
+
+    layer_Number {
+      bindings = <
+//    ┌─────┬──────┬──────┬──────┬──────┐                                                   ┌─────┬─────┬─────┬─────┬─────┐
+//    │     │      │      │      │      │                                                   │     │     │     │     │     │
+//    ├─────┼──────┼──────┼──────┼──────┼─────┐                                       ┌─────┼─────┼─────┼─────┼─────┼─────┤
+//    │     │      │      │      │      │     │                                       │     │     │     │     │     │     │
+//    ├─────┼──────┼──────┼──────┼──────┼─────┤                                       ├─────┼─────┼─────┼─────┼─────┼─────┤
+//    │     │      │      │      │ KP_^ │     │                                       │     │  7  │  8  │  9  │     │     │
+//    ├─────┼──────┼──────┼──────┼──────┼─────┤                                       ├─────┼─────┼─────┼─────┼─────┼─────┤
+//    │     │ kp_/ │ kp_- │ kp_+ │ kp_* │     │                                       │  $  │  4  │  5  │  6  │  %  │     │
+//    ├─────┼──────┼──────┼──────┼──────┼─────┼─────┬─────┬─────┐   ┌─────┬─────┬─────┼─────┼─────┼─────┼─────┼─────┼─────┤
+//    │     │  <   │      │  =   │  >   │     │     │     │     │   │     │     │     │  _  │  1  │  2  │  3  │     │     │
+//    ├─────┼──────┼──────┼──────┼──────┼─────┼─────┼─────┼─────┤   ├─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┼─────┤
+//    │     │      │      │      │      │     │     │     │     │   │  ,  │  .  │  0  │     │     │     │     │     │     │
+//    └─────┴──────┴──────┴──────┴──────┘     └─────┴─────┴─────┘   └─────┴─────┴─────┘     └─────┴─────┴─────┴─────┴─────┘
+  &trans   &trans         &trans         &trans        &trans                                                                                                  &trans      &trans      &trans      &trans      &trans
+  &trans   &trans         &trans         &trans        &trans            &trans                                                                    &trans      &trans      &trans      &trans      &trans      &trans
+  &trans   &trans         &trans         &trans        &kp KP_CARET      &trans                                                                    &trans      &kp KP_N7   &kp KP_N8   &kp KP_N9   &trans      &trans
+  &trans   &kp KP_SLASH   &kp KP_MINUS   &kp KP_PLUS   &kp KP_MULTIPLY   &trans                                                                    &kp DLLR    &kp KP_N4   &kp KP_N5   &kp KP_N6   &kp PRCNT   &trans
+  &trans   &kp LT         &trans         &kp EQUAL     &kp GT            &trans   &trans   &trans   &trans       &trans      &trans    &trans      &kp UNDER   &kp KP_N1   &kp KP_N2   &kp KP_N3   &trans      &trans
+  &trans   &trans         &trans         &trans        &trans                     &trans   &trans   &trans       &kp COMMA   &kp DOT   &kp KP_N0               &trans      &trans      &trans      &trans      &trans
+     >;
+    };
+
+    layer_Symbol {
+      bindings = <
 //    ┌─────┬─────┬─────┬─────┬─────┐                                           ┌──────────┬───────────┬──────────┬──────────┬──────┐
 //    │     │     │     │     │     │                                           │          │           │          │          │      │
 //    ├─────┼─────┼─────┼─────┼─────┼───┐                                 ┌─────┼──────────┼───────────┼──────────┼──────────┼──────┤
@@ -441,7 +468,8 @@
   &kp HASH    &kp CARET   &kp EQUAL   &kp UNDER   &kp DLLR   &kp STAR                                                                      &kp DQT     &kp BSPC         &kp TAB       &kp SPACE      &kp RET     &kp END
   &kp TILDE   &kp LT      &kp PIPE    &kp MINUS   &kp GT     &kp FSLH    &kp BSLH    &kp DOT     &kp STAR       &trans   &trans   &trans   &kp SQT     &kp DELETE       &kp LS(TAB)   &trans         &trans      &trans
   &trans      &kp AMPS    &kp SQT     &kp DQT     &kp PLUS               &kp PRCNT   &kp COLON   &kp AT         &trans   &trans   &trans               &kp K_UNDO       &kp K_REDO    &trans         &trans      &trans
->;};
-
+      >;
     };
+
+  };
 };
